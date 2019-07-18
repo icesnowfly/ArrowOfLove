@@ -19,10 +19,11 @@ function MyGame(levelID) {
     this.kWin = "assets/WinPage.png";
     this.kLose = "assets/LosePage.png";
     this.kEnergyBar = "assets/EnergyBar.png";
+    this.kBGM = "assets/AudioTest/WeddingBGM.mp3";
 
     this.mButtonSelect = null;
     this.mBackButton = null;
-    this.mWinButton = null;
+    //this.mWinButton = null;
     // The camera to view the scene
     this.mCamera = null;
     this.mWinPage = null;
@@ -39,9 +40,11 @@ MyGame.prototype.loadScene = function () {
     gEngine.Textures.loadTexture(this.kWin);
     gEngine.Textures.loadTexture(this.kLose);
     gEngine.Textures.loadTexture(this.kEnergyBar);
+
 };
 
 MyGame.prototype.unloadScene = function () {
+    //gEngine.AudioClips.stopBackgroundAudio();
     gEngine.Textures.unloadTexture(this.kTexture);
     gEngine.Textures.unloadTexture(this.kWood);
     gEngine.Textures.unloadTexture(this.kBoy);
@@ -123,6 +126,7 @@ MyGame.prototype.initialize = function () {
     this.mBackButton = new UIButton(this.BackSelect, this, [700, 50], [100, 40], "Back", 6);
     this.mWinPage = new WinPage(this.kWin, this.mCurrentLevel);
     this.mLosePage = new LosePage(this.kLose);
+
 };
 
 // This is the draw function, make sure to setup proper drawing environment, and more

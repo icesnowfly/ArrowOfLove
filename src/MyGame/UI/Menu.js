@@ -12,6 +12,7 @@
 
 function Menu(){
     this.kMenu = "assets/Menu.png";
+    this.kBGM = "assets/AudioTest/WeddingBGM.mp3";
     this.kUIButton = "assets/UI/SimpleButton.png";
 //    this.kWrong = "assets/Wrong.png";
     
@@ -26,12 +27,14 @@ gEngine.Core.inheritPrototype(Menu, Scene);
 
 Menu.prototype.loadScene = function(){
     gEngine.Textures.loadTexture(this.kMenu);
+    gEngine.AudioClips.loadAudio(this.kBGM);
 //    gEngine.Textures.loadTexture(this.kWrong);
 //    gEngine.Textures.loadTexture(this.kUIButton);
 };
 
 Menu.prototype.unloadScene = function(){
     gEngine.Textures.unloadTexture(this.kMenu);
+    gEngine.AudioClips.unloadAudio(this.kBGM);
 //    gEngine.Textures.unloadTexture(this.kWrong);
 //    gEngine.Textures.unloadTexture(this.kUIButton);
     if(this.LevelSelect === "Start"){
@@ -61,6 +64,7 @@ Menu.prototype.initialize = function(){
     this.StartButton = new UIButton(this.StartSelect, this, [400, 300], [300, 60], "Start", 6);
     this.LevelButton = new UIButton(this.LevelSelected, this, [400, 200], [300, 60], "Level", 6);
     this.HelpButton = new UIButton(this.HelpSelect, this, [400, 100], [300, 60], "Help", 6);
+    gEngine.AudioClips.playBackgroundAudio(this.kBGM);
 };
 
 Menu.prototype.draw = function(){
